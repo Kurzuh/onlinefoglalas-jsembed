@@ -14,7 +14,7 @@
                 locale: config.locale || 'hu',
                 height: config.height || 'auto',
                 width: config.width || '100%',
-                baseUrl: config.baseUrl || '',
+                baseUrl: config.baseUrl || 'https://onlinefoglalas.hu',
                 credentials: config.credentials !== undefined ? config.credentials : true,
                 useShadowDOM: config.useShadowDOM !== undefined ? config.useShadowDOM : false,
                 cssIsolation: config.cssIsolation !== undefined ? config.cssIsolation : true,
