@@ -153,20 +153,22 @@
         }
 
         buildUrl() {
-            let url = this.config.baseUrl;
-            
-            // Add locale prefix if not Hungarian
+            const base = new URL(this.config.baseUrl);
+        
+            // Tegyük be a tenant domaint a host elejére
+            base.hostname = this.config.domain + '.' + base.hostname;
+        
+            // Locale kezelése
             if (this.config.locale && this.config.locale !== 'hu') {
-                url += '/' + this.config.locale;
+                base.pathname = '/' + this.config.locale + '/';
+            } else {
+                base.pathname = '/';
             }
-            
-            // Add domain
-            url += '/' + this.config.domain;
-            
-            // Add embed parameter
-            url += '?embed=1';
-            
-            return url;
+        
+            // Embed paraméter
+            base.searchParams.set('embed', '1');
+        
+            return base.toString();
         }
 
         async loadContent() {
